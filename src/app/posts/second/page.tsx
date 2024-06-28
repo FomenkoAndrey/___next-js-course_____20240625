@@ -5,5 +5,5 @@ export const metadata = {
 }
 
 export default function SecondPost() {
-  return <h1>SecondPost Page</h1>
+  return <h1 className="header">Second Post Page</h1>
 }

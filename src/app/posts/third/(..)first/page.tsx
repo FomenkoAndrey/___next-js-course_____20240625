@@ -3,5 +3,5 @@ export const metadata = {
 }
 
 export default function FirstPost() {
-  return <h1 className="header">First Post Page</h1>
+  return <h1 className="header text-red-700">(..) Intercepted First Post Page</h1>
 }
