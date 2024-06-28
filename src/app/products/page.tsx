@@ -4,7 +4,9 @@ export default function ProductsList() {
   const productId = 5
   return (
     <div>
-      <Link href="/">Home</Link>
+      <Link href="/" className="menu-link">
+        Home
+      </Link>
       <h1>Products List Page</h1>
       <ul>
         <li>

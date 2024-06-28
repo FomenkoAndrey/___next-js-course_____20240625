@@ -1,3 +1,2 @@
-/login
-/registration
-/forgot-password
+! 
+мінорні виправлення....
