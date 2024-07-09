@@ -1,6 +1,6 @@
 import { CyberpunkImage, cyberpunkImages } from '@/app/gallery/cyberpunkImages'
 import Image from 'next/image'
-import Modal from '@/components/modal'
+import Modal from '@/components/Modal'
 
 type ImagePageProps = {
   params: {

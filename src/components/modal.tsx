@@ -1,8 +1,9 @@
 'use client'
-import { MouseEventHandler, ReactNode, useCallback, useEffect, useRef } from 'react'
+
+import { MouseEventHandler, useCallback, useEffect, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 
-export default function Modal({ children }: { children: ReactNode }) {
+export default function Modal({ children }: { children: React.ReactNode }) {
   const overlay = useRef(null)
   const wrapper = useRef(null)
   const router = useRouter()
@@ -29,6 +30,7 @@ export default function Modal({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     document.addEventListener('keydown', onKeyDown)
+
     return () => document.removeEventListener('keydown', onKeyDown)
   }, [onKeyDown])
 
