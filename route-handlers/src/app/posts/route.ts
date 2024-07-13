@@ -1,31 +1,23 @@
-import { Post, posts } from '@/app/posts/data'
+import { posts } from '@/app/posts/data'
 import { NextRequest } from 'next/server'
+import { filterPosts, sortPosts } from '@/utils/sorting'
 
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams
   const sortQuery = searchParams.get('sort')
+  const searchQuery = searchParams.get('query')
 
-  if (sortQuery) {
-    const isDescending = sortQuery.startsWith('-')
-    const sortField = isDescending ? sortQuery.substring(1) : sortQuery
+  let filteredPosts = posts
 
-    posts.sort((a: Post, b: Post) => {
-      const fieldA = a[sortField as keyof Post]
-      const fieldB = b[sortField as keyof Post]
-
-      if (typeof fieldA === 'number' && typeof fieldB === 'number') {
-        return isDescending ? fieldB - fieldA : fieldA - fieldB
-      }
-
-      if (typeof fieldA === 'string' && typeof fieldB === 'string') {
-        return isDescending ? fieldB.localeCompare(fieldA) : fieldA.localeCompare(fieldB)
-      }
-
-      return 0
-    })
+  if (searchQuery) {
+    filteredPosts = filterPosts(posts, searchQuery)
   }
 
-  return new Response(JSON.stringify(posts), {
+  if (sortQuery) {
+    sortPosts(filteredPosts, sortQuery)
+  }
+
+  return new Response(JSON.stringify(filteredPosts), {
     headers: { 'Content-Type': 'application/json' }
   })
 }
