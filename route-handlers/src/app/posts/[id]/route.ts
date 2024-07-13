@@ -1,4 +1,5 @@
 import { posts } from '@/app/posts/data'
+import { redirect } from 'next/navigation'
 
 type ContextProps = {
   params: {
@@ -10,6 +11,10 @@ type ContextProps = {
 export async function GET(request: Request, context: ContextProps) {
   const { id } = context.params
   const post = posts.find((post) => post.id === +id)
+
+  if (!posts.some((post) => post.id === +id)) {
+    redirect('/posts')
+  }
 
   return Response.json(post)
 }
