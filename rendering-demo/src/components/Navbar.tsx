@@ -8,8 +8,12 @@ const Navbar = () => {
 
   const links = [
     { href: '/', label: 'Home' },
+    { href: '/landing', label: 'Landing' },
     { href: '/about', label: 'About' },
-    { href: '/dashboard', label: 'Dashboard' }
+    { href: '/dashboard', label: 'Dashboard' },
+    { href: '/products', label: 'Products' },
+    { href: '/server-route', label: 'Server Route' },
+    { href: '/client-route', label: 'Client Route' }
   ]
 
   return (
